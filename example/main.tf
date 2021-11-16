@@ -1,5 +1,5 @@
-variable "example_instance_type" {
-  default = "t3.micro"
+locals {
+  example_instance_type = "t3.micro"
 }
 
 resource "aws_instance" "example" {
