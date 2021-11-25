@@ -22,3 +22,16 @@ resource "aws_s3_bucket_public_access_block" "private" {
   ignore_public_acls = true
   restrict_public_buckets = true
 }
+
+# 外部公開するpublic_bucket
+resource "aws_s3_bucket" "public" {
+  bucket  = "public-pragmatic-terraform"
+  acl	  = "public-read"		  
+
+  cors_rule {
+    allowed_origins = ["https://example.com"]
+    allowed_methods = ["GET"]
+    allowed_headers = ["*"]
+    max_age_seconds = 3000
+  }
+}
