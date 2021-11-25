@@ -35,3 +35,16 @@ resource "aws_s3_bucket" "public" {
     max_age_seconds = 3000
   }
 }
+
+# list6.4 ログバケットの定義
+resource "aws_s3_bucket" "alb_log" {
+  bucket = "alb-log-pragmatic-terraform"
+
+  lifecycle_rule {
+    enabled = true
+
+    expiration {
+      days = "180"
+    }
+  }
+}
